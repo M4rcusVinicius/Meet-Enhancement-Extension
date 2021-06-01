@@ -16,5 +16,5 @@
     }
   ],
 
-  "web_accessible_resources": ["dashboard/home.html"]
+  "web_accessible_resources": ["resources/dashboard.html"]
 }
