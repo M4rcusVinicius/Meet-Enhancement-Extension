@@ -1,35 +1,30 @@
 
+const print = (...message) => {
+  function send(tabs) {
+    browser.tabs.sendMessage(tabs[0].id, {
+      command: "print",
+      message: message
+    });
+  }
+  
+  browser.tabs
+  .query({ active: true, currentWindow: true })
+  .then(send)
+}
+
 function listenForClicks() {
-  document.addEventListener("click", (e) => {
-
-    function beastify(tabs) {
-      let url = e.target.textContent
-      browser.tabs.sendMessage(tabs[0].id, {
-        command: "beastify",
-        beastURL: url,
-      });
-    }
-
-    function reportError(error) {
-      console.error(`Could not beastify: ${error}`);
-    }
-
-    if (e.target.classList.contains("beast")) {
-      browser.tabs
-        .query({ active: true, currentWindow: true })
-        .then(beastify)
-        .catch(reportError);
-    }
-
+  document.addEventListener("click", () => {
+    print('Teste', 123, {teste: 'Teste', 123: 123})
   });
 }
 
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
+  print('There was an error loading the extension:', error)
 }
 
 browser.tabs
-  .executeScript({ file: "/content_scripts/beastify.js" })
+  .executeScript({ file: "/scripts/watch.js" })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);

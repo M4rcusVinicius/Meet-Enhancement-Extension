@@ -3,8 +3,10 @@ const init = () => {
   if (window.hasRun) { return; }
   window.hasRun = true;
 
-  browser.runtime.onMessage.addListener((message) => {
-    console.log('Message:', message)
+  browser.runtime.onMessage.addListener((context) => {
+    switch (context.command) {
+      case 'print': console.log(...context.message); break;
+    }
   });
 };
 
