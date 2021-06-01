@@ -1,5 +1,5 @@
 
-const print = (...message) => {
+function print (...message) {
   function send(tabs) {
     browser.tabs.sendMessage(tabs[0].id, {
       command: "print",
@@ -21,6 +21,7 @@ function listenForClicks() {
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
+  document.querySelector("#error").innerHTML = error + JSON.stringify(error)
   print('There was an error loading the extension:', error)
 }
 

@@ -1,5 +1,5 @@
 
-const init = () => {
+function init () {
   if (window.hasRun) { return; }
   window.hasRun = true;
 
