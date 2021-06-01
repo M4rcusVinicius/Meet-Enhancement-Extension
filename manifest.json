@@ -12,8 +12,9 @@
   "content_scripts": [
     {
       "matches": ["*://meet.google.com/*"],
-      "js": ["meet.js"]
+      "js": ["background/constructor.js", "meet.js"]
     }
-  ]
+  ],
 
+  "web_accessible_resources": ["dashboard/home.html"]
 }
