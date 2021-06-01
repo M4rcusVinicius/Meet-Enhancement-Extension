@@ -21,7 +21,7 @@
         "size": 32
     }],
     "default_title": "Beastify",
-    "default_popup": "popup/choose_beast.html"
+    "default_popup": "popup/dash.html"
   },
 
   "web_accessible_resources": [
