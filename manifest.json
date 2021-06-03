@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": ["*://meet.google.com/*"],
-      "js": ["constructor/dashboard.js", "background.js"]
+      "js": ["constructor/dashboard.js", "constructor/buttons.js", "background.js"]
     }
   ],
 

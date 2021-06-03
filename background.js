@@ -3,6 +3,7 @@ function background()  {
     console.log('Iniciando pacote de aprimoramento')
     dashboard(() => {
       console.log('Dashboard callback')
+      buttons()
     })
   } else {
     console.log('O pacote de aprimoramento do Google Meet não pode ser carregado')
