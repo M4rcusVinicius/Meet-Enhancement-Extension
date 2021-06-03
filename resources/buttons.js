@@ -22,19 +22,11 @@ function stop() {
 
 
 var innerStart = `
-  <div class="VfPpkd-Jh9lGc"></div>
-  <div class="VfPpkd-RLmnJb"></div>
-  <i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true"
-    >play_arrow</i
-  ><span jsname="V67aGc" class="VfPpkd-vQzf8d">Iniciar</span>
+  <div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">play_arrow</i><span jsname="V67aGc" class="VfPpkd-vQzf8d">Iniciar</span>
 `
 
 var innerStop = `
-  <div class="VfPpkd-Jh9lGc"></div>
-  <div class="VfPpkd-RLmnJb"></div>
-  <i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true"
-    >stop</i
-  ><span jsname="V67aGc" class="VfPpkd-vQzf8d">Parar</span>
+  <div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span jsname="V67aGc" class="VfPpkd-vQzf8d">Parar</span>
 `
 
 setButtons()
