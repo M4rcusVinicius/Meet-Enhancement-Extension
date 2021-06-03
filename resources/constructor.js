@@ -46,45 +46,6 @@ function a(html) {
 }
 
 var dash = `
-<div class="CYZUZd">
-  <div class="J8vCN zHGix" role="heading" aria-level="2" tabindex="-1">
-    Dashboard
-  </div>
-  <div class="VUk8eb">
-    <div jsaction="JIbuQc:hR1TY;rcuQ6b:npT2md" jscontroller="AXYg3e">
-      <span data-is-tooltip-wrapper="true"
-        ><button
-          class="VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ IWtuld wBYOYb"
-          jscontroller="soHxf"
-          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef"
-          aria-label="Fechar"
-          data-tooltip-enabled="true"
-          data-tooltip-id="tt-c15"
-          style="
-            --mdc-ripple-fg-size: 28px;
-            --mdc-ripple-fg-scale: 1.7142857142857142;
-            --mdc-ripple-left: 10px;
-            --mdc-ripple-top: 10px;
-          "
-        >
-          <div class="VfPpkd-Bz112c-Jh9lGc"></div>
-          <i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true"
-            >close</i
-          >
-        </button>
-        <div
-          class="EY8ABd-OWXEXe-TAWMXe"
-          role="tooltip"
-          aria-hidden="true"
-          id="tt-c15"
-        >
-          Fechar
-        </div></span
-      >
-    </div>
-  </div>
-</div>
-<div class="hWX4r"></div>
 
 `
 
