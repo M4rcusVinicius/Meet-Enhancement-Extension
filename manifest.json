@@ -1,5 +1,4 @@
 {
-  
   "name": "Pacote de aprimoramento do Google Meet",
   "manifest_version": 2,
   "version": "1.0",
@@ -8,7 +7,13 @@
   "content_scripts": [
     {
       "matches": ["*://meet.google.com/*"],
-      "js": ["constructor/dashboard.js", "constructor/buttons.js", "background.js"]
+      "js": [
+        "process/assets.js",
+        "process/observer.js",
+        "constructor/dashboard.js",
+        "constructor/buttons.js",
+        "background.js"
+      ]
     }
   ],
 
