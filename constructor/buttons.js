@@ -44,7 +44,7 @@ function start() {
     console.log('Start Google Meet Enhancement Suite')
     const button = document.getElementById('start')
     button.removeEventListener('click', start)
-    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">play_arrow</i><span class="VfPpkd-vQzf8d">Iniciar</span>'
+    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
     button.id = 'stop'
     button.addEventListener('click', stop)
   } catch(error) {
@@ -57,7 +57,7 @@ function stop() {
     console.log('Stop Google Meet Enhancement Suite')
     const button = document.getElementById('stop')
     button.removeEventListener('click', stop)
-    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
+    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">play_arrow</i><span class="VfPpkd-vQzf8d">Iniciar</span>'
     button.id = 'start'
     button.addEventListener('click', start)
   } catch(error) {
