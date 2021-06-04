@@ -1,6 +1,7 @@
 function background()  {
   try {
     if (document.querySelector('.R3Gmyc')) {
+      console.clear()
       console.log('Iniciando pacote de aprimoramento')
       dashboard(() => {
         console.log('Dashboard callback')
