@@ -8,14 +8,19 @@
     {
       "matches": ["*://meet.google.com/*"],
       "js": [
-        "process/assets.js",
-        "process/observer.js",
-        "constructor/dashboard.js",
-        "constructor/buttons.js",
-        "background.js"
+        "Background/assets.js",
+        "Background/build.js",
+        "Background/implant.js",
+        "Background/trigger.js"
       ]
     }
   ],
 
-  "web_accessible_resources": ["resources/dashboard.html"]
+  "web_accessible_resources": [
+    "resources/dashboard.html",
+    "InfiltrateCode/Constructor/buttons.js",
+    "InfiltrateCode/Process/observer.js",
+    "InfiltrateCode/assets.js",
+    "InfiltrateCode/trigger.js"
+  ]
 }

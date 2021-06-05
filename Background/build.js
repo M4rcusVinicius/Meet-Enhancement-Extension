@@ -11,7 +11,6 @@ const dashboard = (callback = () => {}) => {
         container.innerHTML = this.responseText;
         container.classList.add('WUFI9b')
         container.id = 'dash'
-        container.style.display = 'none'
         container.style.zIndex = 10000
         wrapper.appendChild(container)
       }
