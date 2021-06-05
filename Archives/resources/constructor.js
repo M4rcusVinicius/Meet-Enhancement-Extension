@@ -1,7 +1,7 @@
 function listener() {
 	try {
     const button = document.querySelector('.ov7jof > span:nth-child(1) > button:nth-child(1)')
-    console.log('Button', button)
+    // console.log('Button', button)
     button.addEventListener('click', () => { open() })
 
     const info = document.querySelector('div.r6xAKc:nth-child(1) > span:nth-child(1) > button:nth-child(1)')
@@ -11,23 +11,23 @@ function listener() {
     const chat = document.querySelector('div.r6xAKc:nth-child(3) > span:nth-child(1) > button:nth-child(1)')
     chat.addEventListener('click', () => { close() })
   } catch(error) {
-    console.log('Error on constructor')
+    setError('Error on constructor')
   }
 }
 
 function open() {
-  console.log('Open')
+  // console.log('Open')
   document.getElementById('dash').style.display = 'block'
 }
 
 function close() {
-  console.log('Close')
+  // console.log('Close')
   document.getElementById('dash').style.display = 'none'
 }
 
 function constructor() {
 	try {
-    console.log('Constructor')
+    // console.log('Constructor')
     const wrapper = document.querySelector('.R3Gmyc')
     const container = document.createElement('div') 
     container.classList.add('WUFI9b')
@@ -37,7 +37,7 @@ function constructor() {
     container.style.zIndex = 10000
   	wrapper.appendChild(container)
   } catch(error) {
-    console.log('Error on constructor')
+    // console.log('Error on constructor')
   }
 }
 

@@ -3,7 +3,7 @@ function setButtons() {
 }
 
 function start() {
-  console.log('Start')
+  // console.log('Start')
   const button = document.getElementById('start')
 	button.removeEventListener('click', start)
   button.innerHTML = innerStart
@@ -12,7 +12,7 @@ function start() {
 }
 
 function stop() {
-  console.log('Stop')
+  // console.log('Stop')
   const button = document.getElementById('stop')
 	button.removeEventListener('click', stop)
   button.innerHTML = innerStop

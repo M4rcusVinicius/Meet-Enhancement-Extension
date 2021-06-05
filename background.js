@@ -2,11 +2,7 @@ function background()  {
   try {
     if (document.querySelector('.R3Gmyc')) {
       console.clear()
-      console.log('Iniciando pacote de aprimoramento')
-      dashboard(() => {
-        console.log('Dashboard callback')
-        buttons()
-      })
+      dashboard(() => { buttons() })
     } else {
       console.count('O pacote de aprimoramento do Google Meet não pode ser carregado')
       setTimeout(background, 2000)

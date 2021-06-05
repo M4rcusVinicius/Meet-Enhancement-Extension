@@ -5,7 +5,7 @@ const dashboard = () => {
       const div = document.createElement("div");
       div.innerHTML = this.responseText;
       document.body.insertBefore(div, document.body.firstChild);
-    } else { console.log("files not found"); }
+    } else { // console.log("files not found"); }
   };
   xml.open("GET", browser.extension.getURL("resources/dashboard.html"), true);
   xml.send();
@@ -23,9 +23,9 @@ const styles = () => {
 
 const addListener = () => {
   const buttons = document.querySelectorAll('.btn')
-  console.log('Listening buttons', buttons)
+  // console.log('Listening buttons', buttons)
   for (const button in buttons) {
-    console.log('Listening:', button)
+    // console.log('Listening:', button)
     button.addEventListener('click', onClick)
   }
 }

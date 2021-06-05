@@ -1,11 +1,9 @@
 function observer() {
   try {
     const users = getUsers()
+    if(!users) { return }
     const [result, change] = process(users);
-    localStorage.setItem('previous', result)
-    console.log('Observer changes:', change)
-    console.log('Observer result:', result)
-    db.previous = result
+    console.table(result)
   } catch(error) {
     setError('Error on observer', error, true)
   }
@@ -13,11 +11,12 @@ function observer() {
 
 function getUsers() {
   const query = userQuery()
+  if (!query) { return false }
   const names = new Array
   return Object.values(query).map(user => {
     let name = user.querySelector(".ZjFb7c").innerText;
     if (names.indexOf(name) !== -1) {
-      setError("There more than one users with the name" + name)
+      setError("There more than one users with the name " + name)
       name = name + ".";
       user.querySelector(".ZjFb7c").innerText = name;
     }
@@ -28,17 +27,15 @@ function getUsers() {
 }
 
 function userQuery() {
-  const query = document.querySelectorAll('.GvcuGe')
+  const query = document.querySelectorAll('.KV1GEc')
   if ( query.length > 0 ) { return query }
-  console.log('>> Open user section to try to load users')
-
   document.querySelector('.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1)').click()
   setTimeout(() => {
   	document.querySelector('.ov7jof > span:nth-child(1) > button:nth-child(1)').click()
-    const query = document.querySelectorAll('.GvcuGe')
+    const query = document.querySelectorAll('.KV1GEc')
     if (query.length = 0) { throw new Error('User query return 0 users') }
-    return query
   }, 1000)
+  return false
 }
 
 

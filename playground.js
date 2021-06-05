@@ -4,7 +4,7 @@ function observer() {
   const users = getUsers()
   const [result, change] = process(users);
   db.previous = result
-  console.log('Change:', change)
+  // console.log('Change:', change)
 }
 
 function getUsers() {
@@ -37,14 +37,14 @@ function process(users) {
       else { user.events.push("unmuted"); }
     }
     delete db.previous[id];
-    console.log(user.name, ":", ...user.events);
+    // console.log(user.name, ":", ...user.events);
     if (user.events.length > 0) { change.push(user); }
     result[id] = user;
   });
 
   for (const [key, user] of Object.entries(db.previous)) {
     user.events.push("leave");
-    console.log(user.name, ":", ...user.events);
+    // console.log(user.name, ":", ...user.events);
     change.push(user);
     result[key] = user;
   }
