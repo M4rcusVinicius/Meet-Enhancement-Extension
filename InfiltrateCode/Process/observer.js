@@ -26,7 +26,7 @@ function getUsers() {
     }
     const muted = !!user.querySelector(".FTMc0c");
     names.push(name);
-    return { name: name, muted: muted, events: [], query: user.querySelector(".cylMye") };
+    return { name: name, muted: muted, events: [], image: user.querySelector(".G394Xd").src };
   });
 }
 
