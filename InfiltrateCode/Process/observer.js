@@ -4,6 +4,7 @@ function observer() {
     if(!users) { return }
     const [result, change] = process(users);
     console.table(result)
+    db.previous = result
   } catch(error) {
     setError('Error on observer', error, true)
   }
