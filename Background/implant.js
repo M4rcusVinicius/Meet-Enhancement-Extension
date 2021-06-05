@@ -7,6 +7,7 @@ function implant() {
     'InfiltrateCode/Process/observer.js',
     'InfiltrateCode/assets.js',
     'InfiltrateCode/db.js',
+    'InfiltrateCode/Process/display.js',
     'InfiltrateCode/trigger.js'
   ]
 

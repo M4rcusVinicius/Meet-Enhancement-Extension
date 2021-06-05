@@ -3,7 +3,7 @@ function observer() {
     const users = getUsers()
     if(!users) { return }
     const [result, change] = process(users);
-    console.table(result)
+    display(change)
     db.previous = result
   } catch(error) {
     setError('Error on observer', error, true)
@@ -26,7 +26,7 @@ function getUsers() {
     }
     const muted = !!user.querySelector(".FTMc0c");
     names.push(name);
-    return { name: name, muted: muted, events: [], /* query: user */ };
+    return { name: name, muted: muted, events: [], query: user.querySelector(".cylMye") };
   });
 }
 
