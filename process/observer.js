@@ -15,14 +15,17 @@ function getUsers() {
   const names = new Array
   return Object.values(query).map(user => {
     let name = user.querySelector(".ZjFb7c").innerText;
-    if (names.indexOf(name) !== -1) {
+    var index = 2
+    while (names.indexOf(name) !== -1) {
       setError("There more than one users with the name " + name)
-      name = name + ".";
+      if (index > 2) { name = name.replace(`(${index - 1})`, `(${index})`) }
+      else {  name = name + ` (${index})`; }
       user.querySelector(".ZjFb7c").innerText = name;
+      index++
     }
     const muted = !!user.querySelector(".FTMc0c");
     names.push(name);
-    return { name: name, muted: muted, events: [], query: user };
+    return { name: name, muted: muted, events: [], /* query: user */ };
   });
 }
 
@@ -42,7 +45,7 @@ function userQuery() {
 function process(users) {
   const result = new Object();
   const change = new Array();
-
+  
   users.forEach(user => {
     const id = user.name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-");
     if (!(id in db.previous)) {
