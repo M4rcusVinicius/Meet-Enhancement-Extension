@@ -16,4 +16,9 @@ function background()  {
   }
 }
 
+const db = {
+  observerTimer: 0,
+  previous: {}
+}
+
 background()

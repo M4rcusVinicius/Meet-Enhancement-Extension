@@ -47,6 +47,7 @@ function start() {
     button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
     button.id = 'stop'
     button.addEventListener('click', stop)
+    observer()
   } catch(error) {
     console.log('Error on open dashboard', error)
   }
