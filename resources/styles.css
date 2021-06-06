@@ -50,3 +50,28 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+.events {
+	display: flex;
+	align-items: center;
+}
+
+.event {
+	margin-left: 4px;
+	font-weight: 100;
+	font-size: 20px;
+	color: #6d6d6f;
+}
+
+.time {
+	color: rgb(33, 33, 33);
+	font-family: "Google Sans", Roboto, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.15px;
+	line-height: normal;
+	text-transform: none;
+	padding: 7px 8px;
+	border-radius: 5px;
+	margin-left: 5px;
+}
