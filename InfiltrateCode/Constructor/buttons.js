@@ -1,9 +1,9 @@
 function buttons() {
   try {
     const listener = [
-      ['.ov7jof > span:nth-child(1) > button:nth-child(1)', open],
+      ['.ov7jof > span:nth-child(1) > button:nth-child(1)', close],
       ['div.r6xAKc:nth-child(1) > span:nth-child(1) > button:nth-child(1)', close],
-      ['.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1)', close],
+      ['.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1)', open],
       ['div.r6xAKc:nth-child(3) > span:nth-child(1) > button:nth-child(1)', close],
       ['#start', start],
     ]
