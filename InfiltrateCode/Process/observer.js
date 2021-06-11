@@ -5,6 +5,7 @@ function observer() {
     const [result, change] = process(users);
     display(change)
     db.previous = result
+    if (db.play) { db.observer = setTimeout(observer, 1000); }
   } catch(error) {
     setError('Error on observer', error, true)
   }

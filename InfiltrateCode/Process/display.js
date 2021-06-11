@@ -1,5 +1,4 @@
 function display(change) {
-  console.table(change);
   change.map((user) => {
     const container = document.createElement("div");
     container.classList.add("user");

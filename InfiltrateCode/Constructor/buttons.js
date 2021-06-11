@@ -36,7 +36,8 @@ function start() {
     button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
     button.id = 'stop'
     button.addEventListener('click', stop)
-    observer()
+    db.play = true
+    db.observer = setTimeout(observer, 1000);
   } catch(error) { setError('Error on start button', error, true) }
 }
 
@@ -47,6 +48,7 @@ function stop() {
     button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">play_arrow</i><span class="VfPpkd-vQzf8d">Iniciar</span>'
     button.id = 'start'
     button.addEventListener('click', start)
-    observer()
+    db.play = false
+    clearTimeout(db.observer)
   } catch(error) { setError('Error on stop button', error, true) }
 }
