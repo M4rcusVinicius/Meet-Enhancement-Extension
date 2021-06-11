@@ -60,7 +60,7 @@ function start() {
   try {
     const button = document.getElementById('start')
     button.removeEventListener('click', start)
-    button.innerHTML = '< class="VfPpkd-Jh9lGc"></><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
+    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">stop</i><span class="VfPpkd-vQzf8d">Parar</span>'
     button.id = 'stop'
     button.addEventListener('click', stop)
     db.play = true

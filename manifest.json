@@ -18,6 +18,9 @@
 
   "web_accessible_resources": [
     "resources/dashboard.html",
+    "resources/configuration.html",
+    "resources/mutedConfig.html",
+    "resources/setMuted.html",
     "resources/styles.css",
     "InfiltrateCode/Constructor/buttons.js",
     "InfiltrateCode/Process/observer.js",
