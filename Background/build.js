@@ -9,8 +9,7 @@ const dashboard = (callback = () => {}) => {
         const wrapper = document.querySelector('.R3Gmyc')
         const container = document.createElement('div') 
         container.innerHTML = this.responseText;
-        container.classList.add('WUFI9b')
-        container.id = 'dash'
+        container.id = "meetUpgrade"
         container.style.zIndex = 10000
         wrapper.appendChild(container)
       }
