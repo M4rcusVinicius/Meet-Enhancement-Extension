@@ -15,15 +15,11 @@ function getUsers() {
   const query = userQuery()
   if (!query) { return false }
   const names = new Array
-  return Object.values(query).map(user => {
+  return Object.values(query).map((user, index) => {
     let name = user.querySelector(".ZjFb7c").innerText;
-    var index = 2
-    while (names.indexOf(name) !== -1) {
+    if (names.indexOf(name) !== -1) {
       setError("There more than one users with the name " + name)
-      if (index > 2) { name = name.replace(`(${index - 1})`, `(${index})`) }
-      else {  name = name + ` (${index})`; }
-      user.querySelector(".ZjFb7c").innerText = name;
-      index++
+      name = name + ` (${index})`;
     }
     const muted = !!user.querySelector(".FTMc0c");
     names.push(name);
@@ -63,10 +59,10 @@ function process(users) {
   });
 
   for (const [key, user] of Object.entries(db.previous)) {
-    
-    user.events.push("leave");
-    change.push(user);
-    result[key] = user;
+    if(!(key in result)) {
+      user.events.push("leave");
+      change.push(user);
+    }
   }
   return [result, change];
 }
