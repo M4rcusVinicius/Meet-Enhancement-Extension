@@ -30,13 +30,8 @@ function getUsers() {
 function userQuery() {
   const query = document.querySelectorAll('.KV1GEc')
   if ( query.length > 0 ) { return query }
-  document.querySelector('.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1)').click()
-  setTimeout(() => {
-  	document.querySelector('.ov7jof > span:nth-child(1) > button:nth-child(1)').click()
-    const query = document.querySelectorAll('.KV1GEc')
-    if (query.length = 0) { throw new Error('User query return 0 users') }
-  }, 1000)
-  return false
+  setError('User query return 0 users', query, true)
+  throw new Error('User query return 0 users')
 }
 
 
