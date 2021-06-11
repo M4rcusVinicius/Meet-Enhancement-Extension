@@ -1,12 +1,13 @@
 function buttons() {
   try {
     const listener = [
-      ['.ov7jof > span:nth-child(1) > button:nth-child(1)', close],
+      ['.ov7jof > span:nth-child(1) > button:nth-child(1)', openConfig],
       ['div.r6xAKc:nth-child(1) > span:nth-child(1) > button:nth-child(1)', close],
       ['.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1)', open],
       ['div.r6xAKc:nth-child(3) > span:nth-child(1) > button:nth-child(1)', close],
       ['#start', start],
       ['#mute', mute],
+      ['#openMutedList', openMutedList],
     ]
     listener.forEach(button => {
     	document.querySelector(button[0]).addEventListener('click', button[1])
@@ -19,13 +20,31 @@ function buttons() {
 function open() {
   try {
     document.getElementById('dash').style.display = 'block'
+    document.getElementById('configuration').style.display = 'none'
+    document.getElementById('mutedConfig').style.display = 'none'
   } catch(error) { setError('Error on open dashboard', error) }
 }
 
 function close() {
   try {
+    document.getElementById('configuration').style.display = 'none'
     document.getElementById('dash').style.display = 'none'
+    document.getElementById('mutedConfig').style.display = 'none'
   } catch(error) { setError('Error on close dashboard', error) }
+}
+
+function openConfig() {
+  try {
+    document.getElementById('dash').style.display = 'none'
+    document.getElementById('configuration').style.display = 'block'
+    document.getElementById('mutedConfig').style.display = 'none'
+  } catch(error) { setError('Error on open dashboard', error) }
+}
+
+function openMutedList() {
+  document.getElementById('configuration').style.display = 'none'
+  document.getElementById('dash').style.display = 'none'
+  document.getElementById('mutedConfig').style.display = 'block'
 }
 
 // ========================================================================================== //
