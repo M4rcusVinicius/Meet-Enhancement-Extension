@@ -75,3 +75,14 @@
 	border-radius: 5px;
 	margin-left: 5px;
 }
+
+.toBlock {
+  cursor: pointer;
+  padding: 0 16px 0 20px;
+	transition: 200ms;
+}
+
+.toBlock:hover {
+  background-color: #dbe9ff;
+}
+

@@ -24,6 +24,7 @@
     "resources/styles.css",
     "InfiltrateCode/Constructor/buttons.js",
     "InfiltrateCode/Process/observer.js",
+    "InfiltrateCode/Audio/config.js",
     "InfiltrateCode/assets.js",
     "InfiltrateCode/trigger.js"
   ]

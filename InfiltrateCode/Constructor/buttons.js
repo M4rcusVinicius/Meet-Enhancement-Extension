@@ -8,8 +8,10 @@ function buttons() {
       ['#start', start],
       ['#mute', mute],
       ['#openMutedList', openMutedList],
+      ['#openSetMuted', openSetMuted],
     ]
     listener.forEach(button => {
+      console.log('Button:', button)
     	document.querySelector(button[0]).addEventListener('click', button[1])
     })
   } catch (error) { setError('Error on add event listener in buttons', error, true) }
@@ -22,6 +24,7 @@ function open() {
     document.getElementById('dash').style.display = 'block'
     document.getElementById('configuration').style.display = 'none'
     document.getElementById('mutedConfig').style.display = 'none'
+    document.getElementById('setMuted').style.display = 'none'
   } catch(error) { setError('Error on open dashboard', error) }
 }
 
@@ -30,6 +33,7 @@ function close() {
     document.getElementById('configuration').style.display = 'none'
     document.getElementById('dash').style.display = 'none'
     document.getElementById('mutedConfig').style.display = 'none'
+    document.getElementById('setMuted').style.display = 'none'
   } catch(error) { setError('Error on close dashboard', error) }
 }
 
@@ -38,6 +42,7 @@ function openConfig() {
     document.getElementById('dash').style.display = 'none'
     document.getElementById('configuration').style.display = 'block'
     document.getElementById('mutedConfig').style.display = 'none'
+    document.getElementById('setMuted').style.display = 'none'
   } catch(error) { setError('Error on open dashboard', error) }
 }
 
@@ -45,6 +50,15 @@ function openMutedList() {
   document.getElementById('configuration').style.display = 'none'
   document.getElementById('dash').style.display = 'none'
   document.getElementById('mutedConfig').style.display = 'block'
+  document.getElementById('setMuted').style.display = 'none'
+}
+
+function openSetMuted() {
+  document.getElementById('configuration').style.display = 'none'
+  document.getElementById('dash').style.display = 'none'
+  document.getElementById('mutedConfig').style.display = 'none'
+  document.getElementById('setMuted').style.display = 'block'
+  usersForBlock()
 }
 
 // ========================================================================================== //
