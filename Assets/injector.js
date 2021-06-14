@@ -25,18 +25,26 @@ function injectHTML(message, url, id, html, place, callback) {
     if (this.readyState == 4 && this.status == 200) {
       html.innerHTML = this.responseText;
       document.querySelector(place).appendChild(html)
-      console.log()
+      print(message, [
+        ['Message: ', message],
+        ['Path: ', url],
+        ['ID: ', id],
+        ['HTML: ', html],
+        ['Place: ', place],
+        ['Callback: ', callback],
+      ])
     }
   };
   xml.open("GET", url, true);
   xml.send();
   xml.onerror = err => { 
-    error('Error on create XML', [
+    error('Error - ' + message, [
       ['Message: ', message],
       ['Path: ', url],
       ['ID: ', id],
       ['HTML: ', html],
       ['Place: ', place],
+      ['Callback: ', callback],
     ], err )
   }
   xml.onloadend = callback
