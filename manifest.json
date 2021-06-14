@@ -1,31 +1,16 @@
 {
   "name": "Pacote de aprimoramento do Google Meet",
-  "manifest_version": 2,
-  "version": "1.0",
-  "icons": { "48": "icons/border-48.png" },
+  "manifest_version": 3,
+  "version": "1.2",
 
   "content_scripts": [
     {
       "matches": ["*://meet.google.com/*"],
       "js": [
-        "Background/assets.js",
-        "Background/build.js",
-        "Background/implant.js",
-        "Background/trigger.js"
       ]
     }
   ],
 
   "web_accessible_resources": [
-    "resources/dashboard.html",
-    "resources/configuration.html",
-    "resources/mutedConfig.html",
-    "resources/setMuted.html",
-    "resources/styles.css",
-    "InfiltrateCode/Constructor/buttons.js",
-    "InfiltrateCode/Process/observer.js",
-    "InfiltrateCode/Audio/config.js",
-    "InfiltrateCode/assets.js",
-    "InfiltrateCode/trigger.js"
   ]
 }
