@@ -13,19 +13,43 @@
 /" =========================================================== */
 
 
-function injector(message, url, id, html, place, style, callback) {
-  try {
-    injectHTML(message, url, id, html, place, callback)
-  } catch(err) { }
+function constructor(message, url, id, html, place, style, callback) {
+  try { 
+    buildStyle(style, message)
+    build(message, url, id, html, place, callback)
+  } catch(err) { 
+    print('Error - ' + message, [
+      ['Message: ', message],
+      ['Path: ', url],
+      ['ID: ', id],
+      ['HTML: ', html],
+      ['Place: ', place],
+      ['Style: ', style],
+      ['Callback: ', callback],
+    ])
+  }
 }
 
-function injectHTML(message, url, id, html, place, callback) {
+function buildStyle(style, message) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet'; 
+  link.type = 'text/css';
+  link.href = style.src;
+  link.id = style.id
+  document.querySelector('head').appendChild(link); 
+  print('Style - ' + message, [
+    ['SRC: ', style.src],
+    ['ID: ', style.id],
+  ])
+}
+
+function build(message, url, id, html, place, callback) {
   const xml = new XMLHttpRequest();
   xml.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       html.innerHTML = this.responseText;
       document.querySelector(place).appendChild(html)
-      print(message, [
+      print('Complete - ' + message, [
         ['Message: ', message],
         ['Path: ', url],
         ['ID: ', id],
