@@ -41,6 +41,9 @@ function process(users) {
   
   users.forEach(user => {
     const id = user.name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-");
+    if (db.muted.indexOf(user.name) !== -1) {
+      user.block = true
+    } else { alert() }
     if (!(id in db.previous)) {
       { !user.muted && user.events.push("unmuted"); }
       user.events.push("new");
@@ -59,5 +62,19 @@ function process(users) {
       change.push(user);
     }
   }
-  return [result, change];
+  return [result, change, alert];
+}
+
+function alert() {
+  if (db.notDisturb) {
+    clearTimeout(db.timer)
+    Object.values(document.querySelectorAll('audio')).map(audio => {
+      audio.muted = false
+    })
+    db.timer = setTimeout(() => {
+      Object.values(document.querySelectorAll('audio')).map(audio => {
+        audio.muted = true
+      })
+    }, 10000)
+  }
 }

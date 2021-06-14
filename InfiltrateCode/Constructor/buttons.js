@@ -66,6 +66,8 @@ function openSetMuted() {
 
 function mute() {
   try {
+    db.notDisturb = true
+    clearTimeout(db.timer)
     const button = document.getElementById('mute')
     button.removeEventListener('click', mute)
     button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">volume_up</i><span class="VfPpkd-vQzf8d">Ativar som</span>'
@@ -79,13 +81,15 @@ function mute() {
 
 function unmute() {
   try {
+    db.notDisturb = false
+    clearTimeout(db.timer)
     const button = document.getElementById('unmute')
     button.removeEventListener('click', unmute)
     button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">volume_off</i><span class="VfPpkd-vQzf8d">Desativar som</span>'
     button.id = 'mute'
     button.addEventListener('click', mute)
     Object.values(document.querySelectorAll('audio')).map(audio => {
-      audio.muted = true
+      audio.muted = false
     })
   } catch(error) { setError('Error on start button', error, true) }
 }
