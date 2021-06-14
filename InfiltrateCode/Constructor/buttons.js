@@ -84,10 +84,12 @@ function unmute() {
     db.notDisturb = false
     clearTimeout(db.timer)
     const button = document.getElementById('unmute')
-    button.removeEventListener('click', unmute)
-    button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">volume_off</i><span class="VfPpkd-vQzf8d">Desativar som</span>'
-    button.id = 'mute'
-    button.addEventListener('click', mute)
+    if (button) {
+      button.removeEventListener('click', unmute)
+      button.innerHTML = '<div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><i class="google-material-icons VfPpkd-kBDsod" aria-hidden="true">volume_off</i><span class="VfPpkd-vQzf8d">Desativar som</span>'
+      button.id = 'mute'
+      button.addEventListener('click', mute)
+    }
     Object.values(document.querySelectorAll('audio')).map(audio => {
       audio.muted = false
     })

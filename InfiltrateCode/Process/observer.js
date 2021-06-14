@@ -41,7 +41,7 @@ function process(users) {
   
   users.forEach(user => {
     const id = user.name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-");
-    if (db.muted.indexOf(user.name) !== -1) {
+    if (db.muted.indexOf(user.name) !== -1 | user.muted) {
       user.block = true
     } else { alert() }
     if (!(id in db.previous)) {
@@ -67,11 +67,13 @@ function process(users) {
 
 function alert() {
   if (db.notDisturb) {
+    console.log("Audio ligado")
     clearTimeout(db.timer)
     Object.values(document.querySelectorAll('audio')).map(audio => {
       audio.muted = false
     })
     db.timer = setTimeout(() => {
+      console.log("Audio desligado")
       Object.values(document.querySelectorAll('audio')).map(audio => {
         audio.muted = true
       })
