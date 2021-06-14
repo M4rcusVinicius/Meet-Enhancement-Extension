@@ -1,9 +1,13 @@
 function error(message, extend,  error) {
-  alert(message)
   console.groupCollapsed(message)
   extend.forEach(element => {
-    console.log(element)
+    if (Array.isArray(element)) {
+      console.log(...element)
+    } else {
+      console.log(element)
+    }
   });
   console.error(error)
   console.groupEnd()
+  alert(message)
 }

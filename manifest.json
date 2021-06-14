@@ -1,6 +1,6 @@
 {
   "name": "Pacote de aprimoramento do Google Meet",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "version": "1.2",
 
   "content_scripts": [
