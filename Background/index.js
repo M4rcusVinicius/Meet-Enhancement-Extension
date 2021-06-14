@@ -2,8 +2,15 @@ console.clear()
 
 console.log(
   '%cStart google meet enhancement pack',
-  'background-color: #1a73e8;padding: 40px;color: white;font-size: 17px; font-weight: 600; line-height: 40px;'
-)
+  `
+    background-color: #1a73e8;
+    padding: 40px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 40px;
+  `
+) // Create extension banner init
 console.log('%c', 'line-height: 10px;')
 
 const prevComponents = [
@@ -19,8 +26,6 @@ prevComponents.forEach(query => {
   })
 })
 console.groupEnd()
-
-
 
 // Create button to implement all functions
 initButton()

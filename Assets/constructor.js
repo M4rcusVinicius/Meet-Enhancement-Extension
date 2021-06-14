@@ -93,3 +93,24 @@ function quickBuild(element, place, style) {
     ], err)
   }
 }
+
+// =========================================================== //
+
+function onClick(query, func, type = 'click') {
+  try {
+    document.querySelectorAll(query).forEach(element => {
+      element.addEventListener(type, func)
+    })
+    print('Add event listener - ' +  query, [
+      ['Function:', func],
+      ['Query:', query],
+      ['Type:', type]
+    ])
+  } catch (err) {
+    error('Error on add event listener - ' +  query, [
+      ['Function:', func],
+      ['Query:', query],
+      ['Type:', type]
+    ], err)
+  }
+}

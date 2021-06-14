@@ -8,6 +8,9 @@ function initButton() {
     id: 'initCSS'
   }
   quickBuild(element, 'body', style)
+  onClick('#initButton', () => {
+    console.log('Click on init button')
+  })
   print('Create init button', [
     ['Element:', element],
     ['Style:', style]
