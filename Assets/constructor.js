@@ -79,9 +79,17 @@ function build(message, url, id, html, place, callback) {
 
 
 function quickBuild(element, place, style) {
-  const css = document.createElement('style');
-  css.id = style.id;
-  css.innerHTML = style.css
-  document.querySelector('head').appendChild(css); 
-  document.querySelector(place).appendChild(element)
+  try {
+    const css = document.createElement('style');
+    css.id = style.id;
+    css.innerHTML = style.css
+    document.querySelector('head').appendChild(css); 
+    document.querySelector(place).appendChild(element)
+  } catch (err) {
+    error('Error on quick build', [
+      ['Element:', element],
+      ['Place:', place],
+      ['Style', style]
+    ], err)
+  }
 }
