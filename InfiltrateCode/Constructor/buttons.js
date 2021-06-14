@@ -9,6 +9,7 @@ function buttons() {
       ['#mute', mute],
       ['#openMutedList', openMutedList],
       ['#openSetMuted', openSetMuted],
+      ['#closeBlock', openMutedList],
     ]
     listener.forEach(button => {
       console.log('Button:', button)

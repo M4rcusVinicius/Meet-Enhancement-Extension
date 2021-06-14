@@ -2,8 +2,8 @@ function usersForBlock() {
 	const users = getUsers()
   var list = '' 
   users.map(user => {
+    if (db.muted.indexOf(user.name) !== -1) { return }
     const item = toBlockConstructor(user.name, user.image)
-    console.log(user.name)
     list += item
   })
   document.querySelector('#toBlockList').innerHTML = list
@@ -17,7 +17,9 @@ function usersForBlockEventListener() {
 
 function blockUser(ev) {
   const name = ev.target.querySelector('.userName').innerText
-  console.log('Block:', name)
+  console.log('Muted:', name)
+  db.muted.push(name)
+  openMutedList()
 }
 
 const toBlockConstructor = (name, image) => `
@@ -30,6 +32,3 @@ const toBlockConstructor = (name, image) => `
     </div>
   </div>
 `;
-
-
-usersForBlock()

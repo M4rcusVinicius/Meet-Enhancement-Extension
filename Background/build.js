@@ -24,7 +24,7 @@ const dashboard = (callback = () => {}) => {
 
 function clearDashboard() {
   console.log('Clear previous dash')
-  const backDash = document.querySelectorAll('#dash')
+  const backDash = document.querySelectorAll('#meetUpgrade')
   for (let index = 0; index < backDash.length; index++ ) {
     backDash[index].remove()
   }
