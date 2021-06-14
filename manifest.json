@@ -7,6 +7,10 @@
     {
       "matches": ["*://meet.google.com/*"],
       "js": [
+        "Assets/console.js",
+        "Assets/constructor.js",
+        "Background/initButton.js",
+        "Background/index.js"
       ]
     }
   ],

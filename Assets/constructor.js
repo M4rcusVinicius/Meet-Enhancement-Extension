@@ -73,3 +73,15 @@ function build(message, url, id, html, place, callback) {
   }
   xml.onloadend = callback
 }
+
+
+// =========================================================== //
+
+
+function quickBuild(element, place, style) {
+  const css = document.createElement('style');
+  css.id = style.id;
+  css.innerHTML = style.css
+  document.querySelector('head').appendChild(css); 
+  document.querySelector(place).appendChild(element)
+}
