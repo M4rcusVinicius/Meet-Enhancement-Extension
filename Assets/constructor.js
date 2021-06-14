@@ -114,3 +114,18 @@ function onClick(query, func, type = 'click') {
     ], err)
   }
 }
+
+// =========================================================== //
+
+function remove(query, message = 'Remove elements') {
+  try {
+    console.groupCollapsed(message)
+    document.querySelectorAll(query).forEach(element => {
+      console.log('Remove: ' + query, element)
+      element.remove()
+    })
+    console.groupEnd()
+  } catch (err) {
+
+  }
+}

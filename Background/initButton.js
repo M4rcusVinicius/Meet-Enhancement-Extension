@@ -8,11 +8,19 @@ function initButton() {
     id: 'initCSS'
   }
   quickBuild(element, 'body', style)
-  onClick('#initButton', () => {
-    console.log('Click on init button')
-  })
+  onClick('#initButton', init)
   print('Create init button', [
     ['Element:', element],
     ['Style:', style]
   ])
+}
+
+
+// =========================================================== //
+
+
+function init() {
+  remove('#initButton', 'Remove init button')
+  remove('#initCSS', 'Remove init style')
+  console.log('Init')
 }

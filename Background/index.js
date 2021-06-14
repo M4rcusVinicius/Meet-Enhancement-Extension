@@ -21,7 +21,7 @@ const prevComponents = [
 console.groupCollapsed('Remove previous elements')
 prevComponents.forEach(query => {
   document.querySelectorAll(query).forEach(element => {
-    console.log('Remove ' + query, element)
+    console.log('Remove: ' + query, element)
     element.remove()
   })
 })
