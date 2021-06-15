@@ -1,3 +1,5 @@
 const db = {
-  teste: 'Teste'
+  teste: 'Teste',
+  ignore: [],
+  previous: [],
 }

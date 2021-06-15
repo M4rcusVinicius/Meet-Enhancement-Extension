@@ -2,11 +2,12 @@ function observer() {
   try {
     const users = getUsers();
     const [result, change] = process(users);
-    display(change);
     db.previous = result;
-    if (db.play) {
-      db.observer = setTimeout(observer, 1000);
-    }
+    print('Observer loop compete', [
+      ["Result", result],
+      ["Change", change],
+    ])
+    if (db.play) { db.observer = setTimeout(observer, 1000); }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);
   }
@@ -40,51 +41,20 @@ function process(users) {
 
   users.forEach((user) => {
     const id = user.name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-");
-    if ((db.muted.indexOf(user.name) !== -1) | user.muted) {
-      user.block = true;
-    } else {
-      alert();
-    }
-    if (!(id in db.previous)) {
-      {
-        !user.muted && user.events.push("unmuted");
-      }
-      user.events.push("new");
-    } else if (db.previous[id].muted !== user.muted) {
-      if (user.muted) {
-        user.events.push("muted");
-      } else {
-        user.events.push("unmuted");
-      }
+    if ( !user.muted | db.ignore.indexOf(user.name) === -1) { console.log('Alert !!!') } 
+    if (!(id in db.previous)) { user.events.push("new") }
+    else if (db.previous[id].muted !== user.muted) {
+      if (user.muted) { user.events.push("muted") } 
+      else { user.events.push("unmuted") }
     }
     delete db.previous[id];
-    if (user.events.length > 0) {
-      change.push(user);
-    }
+    if (user.events.length > 0) { change.push(user) }
     result[id] = user;
   });
 
-  for (const [key, user] of Object.entries(db.previous)) {
-    if (!(key in result)) {
-      user.events.push("leave");
-      change.push(user);
-    }
+  for (const user of Object.values(db.previous)) {
+    user.events.push("leave");
+    change.push(user);
   }
-  return [result, change, alert];
-}
-
-function alert() {
-  if (db.notDisturb) {
-    console.log("Audio ligado");
-    clearTimeout(db.timer);
-    Object.values(document.querySelectorAll("audio")).map((audio) => {
-      audio.muted = false;
-    });
-    db.timer = setTimeout(() => {
-      console.log("Audio desligado");
-      Object.values(document.querySelectorAll("audio")).map((audio) => {
-        audio.muted = true;
-      });
-    }, 10000);
-  }
+  return [result, change];
 }
