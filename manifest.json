@@ -10,6 +10,7 @@
         "Assets/console.js",
         "Assets/constructor.js",
         "Assets/db.js",
+        "Process/observer.js",
         "Background/initButton.js",
         "Background/index.js"
       ]

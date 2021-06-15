@@ -115,6 +115,28 @@ function onClick(query, func, type = 'click') {
   }
 }
 
+function newClick(query, func, prevFunc, type = 'click') {
+  try {
+    document.querySelectorAll(query).forEach(element => {
+      element.removeEventListener(type, prevFunc)
+      element.addEventListener(type, func)
+    })
+    print('Add new event listener - ' +  query, [
+      ['Function:', func],
+      ['Previous function:', prevFunc],
+      ['Query:', query],
+      ['Type:', type]
+    ])
+  } catch (err) {
+    error('Error on add new event listener - ' +  query, [
+      ['Function:', func],
+      ['Previous function:', prevFunc],
+      ['Query:', query],
+      ['Type:', type]
+    ], err)
+  }
+}
+
 // =========================================================== //
 
 function remove(query, message = 'Remove elements') {

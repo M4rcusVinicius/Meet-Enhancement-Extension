@@ -23,6 +23,7 @@ function init() {
   const html = document.createElement("div");
   html.id = "dashboard";
   html.classList.add("WUFI9b");
+  html.style.zIndex = '1000'
   constructor(
     "Create dashboard",
     browser.extension.getURL("Structure/dashboard/index.html"),
@@ -31,12 +32,35 @@ function init() {
     ".R3Gmyc",
     false,
     () => {
-      onClick("#observer", () => {
-        console.log("Observer");
-      });
+      onClick("#observer", activeObserver);
       onClick("#notDisturb", () => {
         console.log("Not disturb");
       });
     }
   );
+}
+
+function activeObserver() {
+  try {
+    const button = document.querySelector('#observer')
+    button.style.backgroundColor = '#1f6ed8'
+    db.observer = true
+    newClick("#observer", desativeObserver, activeObserver)
+    print("Active observer", [
+      ["Button:", button],
+      ["DB observer", db.observer],
+    ])
+    observer()
+  } catch (err) {
+    error("Error on active observer", [
+      ["Data base:", db]
+    ], err)
+  }
+}
+
+function desativeObserver() {
+  const button = document.querySelector('#observer')
+  button.style.backgroundColor = '#5da0f6'
+  db.observer = false
+  newClick("#observer", activeObserver, desativeObserver)
 }

@@ -7,7 +7,7 @@ function observer() {
       ["Result", result],
       ["Change", change],
     ])
-    if (db.play) { db.observer = setTimeout(observer, 1000); }
+    if (db.observer) { setTimeout(observer, 1000); }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);
   }
