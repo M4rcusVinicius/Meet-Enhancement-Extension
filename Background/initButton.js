@@ -19,8 +19,20 @@ function initButton() {
 // =========================================================== //
 
 
-function init() {
+function init() { 
   remove('#initButton', 'Remove init button')
   remove('#initCSS', 'Remove init style')
-  console.log('Init')
+  const html = document.createElement('div')
+  html.id = 'dashboard'
+  html.classList.add('WUFI9b')
+  constructor(
+    'Create dashboard',
+    browser.extension.getURL("Structure/dashboard/index.html"),
+    'dashboard',
+    html,
+    '.R3Gmyc',
+    false,
+    () => {
+      console.log('complete')
+    })
 }

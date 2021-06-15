@@ -15,7 +15,8 @@ console.log('%c', 'line-height: 10px;')
 
 const prevComponents = [
   '#initButton',
-  '#initCSS'
+  '#initCSS',
+  '#dashboard'
 ]
 
 console.groupCollapsed('Remove previous elements')

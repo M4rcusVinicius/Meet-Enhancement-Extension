@@ -14,8 +14,8 @@
 
 
 function constructor(message, url, id, html, place, style, callback) {
-  try { 
-    buildStyle(style, message)
+  try {
+    if(style) { buildStyle(style, message) }
     build(message, url, id, html, place, callback)
   } catch(err) { 
     print('Error - ' + message, [
