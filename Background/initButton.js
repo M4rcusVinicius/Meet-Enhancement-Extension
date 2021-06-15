@@ -33,6 +33,12 @@ function init() {
     '.R3Gmyc',
     false,
     () => {
-      console.log('complete')
-    })
+      onClick('#observer', () => {
+        console.log("Observer")
+      })
+      onClick('#notDisturb', () => {
+        console.log("Not disturb")
+      })
+    }
+  )
 }
