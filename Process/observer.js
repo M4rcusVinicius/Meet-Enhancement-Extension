@@ -40,16 +40,23 @@ function process(users) {
   const change = new Array();
 
   users.forEach((user) => {
-    const id = user.name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-");
-    if ( !user.muted | db.ignore.indexOf(user.name) === -1) { console.log('Alert !!!') } 
-    if (!(id in db.previous)) { user.events.push("new") }
-    else if (db.previous[id].muted !== user.muted) {
+    if ( !user.muted && db.ignore.indexOf(user.name) === -1) { 
+      print('Alert by not disturb - Unblock user is talking',[
+        ['User ID:', user.id],
+        ['User name:', user.name],
+        ['User muted:', user.muted],
+        ['User events:', user.events],
+      ])
+      console.log('Alert !!!') 
+    } 
+    if (!(user.id in db.previous)) { user.events.push("new") }
+    else if (db.previous[user.id].muted !== user.muted) {
       if (user.muted) { user.events.push("muted") } 
       else { user.events.push("unmuted") }
     }
-    delete db.previous[id];
+    delete db.previous[user.id];
     if (user.events.length > 0) { change.push(user) }
-    result[id] = user;
+    result[user.id] = user;
   });
 
   for (const user of Object.values(db.previous)) {
