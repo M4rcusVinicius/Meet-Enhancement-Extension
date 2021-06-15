@@ -9,6 +9,7 @@
       "js": [
         "Assets/console.js",
         "Assets/constructor.js",
+        "Assets/db.js",
         "Background/initButton.js",
         "Background/index.js"
       ]
