@@ -1,0 +1,126 @@
+
+.userContainer {
+  align-items: center;
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  display: flex;
+  font-family: "Google Sans";
+  font-size: 12px;
+  font-weight: 400;
+  height: 56px;
+  justify-content: space-between;
+  line-height: normal;
+  padding: 0 22px;
+}
+
+.userInformation {
+  align-items: center;
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+  font-family: "Google Sans";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  min-width: 0px;
+}
+
+.userImage {
+  border-bottom-color: rgba(0, 0, 0, 0.87);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgba(0, 0, 0, 0.87);
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: rgba(0, 0, 0, 0.87);
+  border-right-style: none;
+  border-right-width: 0px;
+  border-top-color: rgba(0, 0, 0, 0.87);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-top-style: none;
+  border-top-width: 0px;
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  flex-shrink: 0;
+  font-family: "Google Sans";
+  font-size: 12px;
+  font-weight: 400;
+  height: 32px;
+  line-height: normal;
+  margin-right: 16px;
+  min-width: 32px;
+}
+
+.userName {
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-family: "Google Sans";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.userName > span {
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  flex-grow: 1;
+  font-family: "Google Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userEvents {
+  color: rgba(0, 0, 0, 0.87);
+  direction: ltr;
+  display: flex;
+  font-family: "Google Sans";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.eventList {
+	display: flex;
+	align-items: center;
+}
+
+.event {
+	margin-left: 4px;
+	font-weight: 100;
+	font-size: 20px;
+	color: #6d6d6f;
+}
+
+.time {
+	color: rgb(33, 33, 33);
+	font-family: "Google Sans", Roboto, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.15px;
+	line-height: normal;
+	text-transform: none;
+	padding: 7px 8px;
+	border-radius: 5px;
+	margin-left: 5px;
+}
