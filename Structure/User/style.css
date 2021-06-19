@@ -11,7 +11,14 @@
   justify-content: space-between;
   line-height: normal;
   padding: 0 22px;
+  transition: 200ms;
+  cursor: pointer;
 }
+
+.userContainer:hover {
+  background-color: #c0d6f4;
+}
+
 
 .userInformation {
   align-items: center;
