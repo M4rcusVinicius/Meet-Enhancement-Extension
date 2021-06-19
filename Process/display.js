@@ -5,7 +5,7 @@ function display(change) {
     const container = document.createElement("div");
     container.classList.add('userContainer', user.id);
     const date = new Date()
-    const time = date.getHours() + ':' + date.getMinutes()
+    const time = date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0')
     container.innerHTML = userConstructor(user.name, user.image, time);
     user.events.forEach(event => { 
       const element = document.createElement('i')
