@@ -7,6 +7,7 @@ function observer() {
       ["Result", result],
       ["Change", change],
     ])
+    display(change)
     if (db.observer) { setTimeout(observer, 1000); }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);
@@ -31,6 +32,7 @@ function getUsers() {
       muted: !!user.querySelector(".FTMc0c"),
       events: [],
       image: user.querySelector(".G394Xd").src,
+      color: 'blue'
     };
   });
 }
@@ -40,15 +42,6 @@ function process(users) {
   const change = new Array();
 
   users.forEach((user) => {
-    if ( !user.muted && db.ignore.indexOf(user.name) === -1) { 
-      print('Alert by not disturb - Unblock user is talking',[
-        ['User ID:', user.id],
-        ['User name:', user.name],
-        ['User muted:', user.muted],
-        ['User events:', user.events],
-      ])
-      console.log('Alert !!!') 
-    } 
     if (!(user.id in db.previous)) { user.events.push("new") }
     else if (db.previous[user.id].muted !== user.muted) {
       if (user.muted) { user.events.push("muted") } 
@@ -56,6 +49,16 @@ function process(users) {
     }
     delete db.previous[user.id];
     if (user.events.length > 0) { change.push(user) }
+    if ( !user.muted && db.ignore.indexOf(user.name) === -1) {
+      user.color = '#6d6d6f'
+      print('Alert by not disturb - Unblock user is talking',[
+        ['User ID:', user.id],
+        ['User name:', user.name],
+        ['User muted:', user.muted],
+        ['User events:', user.events],
+      ])
+      console.log('Alert !!!')
+    } 
     result[user.id] = user;
   });
 

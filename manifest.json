@@ -12,7 +12,8 @@
         "Assets/db.js",
         "Process/observer.js",
         "Background/initButton.js",
-        "Background/index.js"
+        "Background/index.js",
+        "Process/display.js"  
       ]
     }
   ],
