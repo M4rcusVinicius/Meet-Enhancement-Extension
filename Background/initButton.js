@@ -38,6 +38,10 @@ function init() {
       });
     }
   );
+  buildStyle({
+    src: browser.extension.getURL("Structure/User/style.css"),
+    id: 'user-style'
+  }, 'User style')
 }
 
 function activeObserver() {
