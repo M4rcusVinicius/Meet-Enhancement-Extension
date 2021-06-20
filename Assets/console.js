@@ -38,3 +38,15 @@ function print(message, extend) {
     console.groupEnd()
   }
 }
+
+function message(message, icon) {
+  try {
+    document.querySelector('#message > div').innerHTML = message
+    document.querySelector('#message > i').innerHTML = icon
+  } catch(err) {
+    error('Error on display message', [
+      ['Message:', message],
+      ['Icon', icon]
+    ], err)
+  }
+}
