@@ -3,7 +3,9 @@ const icons = { muted: 'mic_off', unmuted: 'mic_none', new: 'person_add', leave:
 function display(change) {
   change.map(user => {
     const container = document.createElement("div");
-    container.classList.add('userContainer', user.id);
+    container.classList.add('userContainer');
+    container.setAttribute('user', user.id)
+    container.setAttribute('blocked', user.blocked)
     const date = new Date()
     const time = date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0')
     container.innerHTML = userConstructor(user.name, user.image, time);
@@ -11,9 +13,11 @@ function display(change) {
       const element = document.createElement('i')
       element.classList.add('google-material-icons', 'event')
       element.innerHTML = icons[event]
+      if (user.blocked) { element.style.color = '#ea4335' }
       container.querySelector('#eventContainer').appendChild(element)
     })
     document.getElementById("history").appendChild(container);
+    container.addEventListener("click", block)
     print('Display user in history' + user.id, [
       ["Name", user.name],
       ["ID", user.id],

@@ -1,6 +1,6 @@
 const db = {
   teste: 'Teste',
-  ignore: [],
+  blocked: [],
   previous: [],
   observer: false,
 }

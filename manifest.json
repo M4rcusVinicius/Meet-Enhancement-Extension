@@ -11,9 +11,10 @@
         "Assets/constructor.js",
         "Assets/db.js",
         "Process/observer.js",
+        "Process/display.js",
+        "Process/notDisturb.js",
         "Background/initButton.js",
-        "Background/index.js",
-        "Process/display.js"  
+        "Background/index.js"
       ]
     }
   ],

@@ -25,14 +25,16 @@ function getUsers() {
   return Object.values(query).map((user, index) => {
     let name = user.querySelector(".ZjFb7c").innerText;
     if (names.indexOf(name) !== -1) { name = name + ` (${index})`; }
+    const id = name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-")
     names.push(name);
     return {
       name: name,
-      id: name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-"),
+      id: id,
       muted: !!user.querySelector(".FTMc0c"),
       events: [],
       image: user.querySelector(".G394Xd").src,
-      color: 'blue'
+      color: 'blue',
+      blocked: id in db.blocked
     };
   });
 }
@@ -48,17 +50,16 @@ function process(users) {
       else { user.events.push("unmuted") }
     }
     delete db.previous[user.id];
-    if (user.events.length > 0) { change.push(user) }
-    if ( !user.muted && db.ignore.indexOf(user.name) === -1) {
-      user.color = '#6d6d6f'
+    if ( !user.muted && !user.blocked) {
       print('Alert by not disturb - Unblock user is talking',[
         ['User ID:', user.id],
         ['User name:', user.name],
         ['User muted:', user.muted],
         ['User events:', user.events],
+        ['User blocked:', user.blocked],
       ])
-      console.log('Alert !!!')
     } 
+    if (user.events.length > 0) { change.push(user) }
     result[user.id] = user;
   });
 
