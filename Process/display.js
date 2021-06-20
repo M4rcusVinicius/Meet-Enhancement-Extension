@@ -12,7 +12,7 @@ function display(change) {
       element.classList.add("google-material-icons", "event");
       element.innerHTML = icons[event];
       if (event === "muted" || event === "unmuted") { element.classList.add(user.id + "microphone"); }
-      if (user.blocked) { element.style.color = "#ea4335"; }
+      if (user.blocked) { element.style.color = "rgb(26, 115, 232)"; }
       container.querySelector("#eventContainer").appendChild(element);
     });
     document.getElementById("history").appendChild(container);

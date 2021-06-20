@@ -12,7 +12,7 @@ function block(user) {
     } else {
       db.blocked[user.id] = user;
       print(`Add ${user.name} (${user.id}) in blocked list`, [["User:", user]]);
-      userQuery.map(item => item.style.color = "#ea4335")
+      userQuery.map(item => item.style.color = "rgb(26, 115, 232)")
     }
   } catch (err) {
     error("Error on block person", [
