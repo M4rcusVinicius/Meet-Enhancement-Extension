@@ -1,7 +1,8 @@
 function observer() {
   try {
     const users = getUsers();
-    const [result, change] = process(users);
+    const [result, change, warnUsers] = process(users);
+    warn(warnUsers)
     db.previous = result;
     print('Observer loop compete', [
       ["Result", result],
@@ -35,7 +36,6 @@ function getUsers() {
       image: user.querySelector(".G394Xd").src,
       color: 'blue',
       blocked: id in db.blocked,
-      alert: false,
     };
   });
 }
@@ -43,6 +43,7 @@ function getUsers() {
 function process(users) {
   const result = new Object();
   const change = new Array();
+  const warnUsers = new Array();
 
   users.forEach((user) => {
     if (!(user.id in db.previous)) { user.events.push("new") }
@@ -51,16 +52,7 @@ function process(users) {
       else { user.events.push("unmuted") }
     }
     delete db.previous[user.id];
-    if ( !user.muted && !user.blocked) {
-      user.alert = true
-      print('Alert by not disturb - Unblock user is talking',[
-        ['User ID:', user.id],
-        ['User name:', user.name],
-        ['User muted:', user.muted],
-        ['User events:', user.events],
-        ['User blocked:', user.blocked],
-      ])
-    } 
+    if ( !user.muted && !user.blocked) { warnUsers.push(user) } 
     if (user.events.length > 0) { change.push(user) }
     result[user.id] = user;
   });
@@ -69,5 +61,5 @@ function process(users) {
     user.events.push("leave");
     change.push(user);
   }
-  return [result, change];
+  return [result, change, warnUsers];
 }

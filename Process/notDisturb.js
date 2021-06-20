@@ -21,3 +21,41 @@ function block(user) {
     ], err);
   }
 }
+
+function activeNotDisturb() {
+  try {
+    const button = document.querySelector('#notDisturb')
+    button.style.backgroundColor = '#1f6ed8'
+    db.notDisturb = true
+    newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
+    print("Active not disturb", [ ["Button:", button] ])
+  } catch (err) {
+    error("Error on active not disturb", [
+      ["Data base:", db]
+    ], err)
+  }
+}
+
+function desativeNotDisturb() {
+  const button = document.querySelector('#notDisturb')
+  button.style.backgroundColor = '#5da0f6'
+  db.notDisturb = false
+  db.muted = false
+  Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
+  newClick("#notDisturb", activeNotDisturb, desativeNotDisturb)
+}
+
+function warn(users) {
+  if (db.notDisturb && users.length > 0) {
+    if (!db.muted) { clearTimeout(db.warnTimeout) }
+    Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
+    db.muted = false
+    db.warnTimeout = setTimeout(() => {
+      Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)
+      db.muted = true
+    }, db.timer)
+    print('>> Not disturb warn', [
+      ['Users', users]
+    ])
+  }
+}

@@ -66,24 +66,3 @@ function desativeObserver() {
   db.observer = false
   newClick("#notDisturb", activeObserver, desativeObserver)
 }
-
-function activeNotDisturb() {
-  try {
-    const button = document.querySelector('#notDisturb')
-    button.style.backgroundColor = '#1f6ed8'
-    db.notDisturb = true
-    newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
-    print("Active not disturb", [ ["Button:", button] ])
-  } catch (err) {
-    error("Error on active not disturb", [
-      ["Data base:", db]
-    ], err)
-  }
-}
-
-function desativeNotDisturb() {
-  const button = document.querySelector('#notDisturb')
-  button.style.backgroundColor = '#5da0f6'
-  db.notDisturb = false
-  newClick("#notDisturb", activeNotDisturb, desativeNotDisturb)
-}
