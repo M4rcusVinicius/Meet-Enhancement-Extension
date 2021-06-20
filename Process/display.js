@@ -16,9 +16,7 @@ function display(change) {
       container.querySelector("#eventContainer").appendChild(element);
     });
     document.getElementById("history").appendChild(container);
-    container.addEventListener("click", () => {
-      block(user);
-    });
+    container.addEventListener("click", () => { block({ id: user.id, image: user.image, name: user.name }); });
     print("Display user in history" + user.id, [
       ["Name", user.name],
       ["ID", user.id],
