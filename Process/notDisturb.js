@@ -1,34 +1,22 @@
-function block(ev) {
+function block(user) {
   try {
-    console.log('Click')
-    const tr = ev.target
-    const id = tr.attributes.user.value
-    const user = {
-      id: id,
-      name: tr.querySelector('.userName').innerText,
-      image: tr.querySelector('img').src
+    const userQuery = Object.values(document.getElementsByClassName(user.id + 'microphone'))
+    if (user.blocked) {
+      userQuery.map(item => item.style.color = "#6d6d6f")
+      print(`Remove ${user.name} (${user.id}) from blocked list`, [
+        ["Deleted user info: ", db.blocked[user.id]][
+          ("Current user info:", user)
+        ][("Blocked list:", db.blocked)],
+      ]);
+      delete db.blocked[user.id];
+    } else {
+      db.blocked[user.id] = { id: user.id, image: user.image, name: user.name };
+      print(`Add ${user.name} (${user.id}) in blocked list`, [["User:", user]]);
+      userQuery.map(item => item.style.color = "#ea4335")
     }
-    if (tr.attributes.blocked.value) {
-      print(`Remove ${user.name} (${id}) from blocked list`, [
-        ['Deleted user info: ', db.blocked[id]]
-        ['Current user info:', user]
-        ['Blocked list:', db.blocked]
-      ])
-      tr.attributes.blocked.value = false
-      delete db.blocked[id]
-    } else { 
-      db.blocked[id] = user 
-      tr.attributes.blocked.value = true
-      print(`Add ${user.name} (${id}) in blocked list`, [
-        ['User:', user]
-        ['Blocked list:', db.blocked]
-      ])
-    }
-  } catch(err) {
-    error('Error on block person', [
-      ['Blocked list:', db.blocked]
-      ['Event:', ev]
-      ['Target:', ev.target]
-    ])
+  } catch (err) {
+    error("Error on block person", [
+      ["Blocked list:", db.blocked][("User:", user)],
+    ]);
   }
 }
