@@ -2,7 +2,7 @@ function observer() {
   try {
     const users = getUsers();
     const [result, change, warnUsers] = process(users);
-    warn(warnUsers)
+    warn(warnUsers, change.length > 0)
     db.previous = result;
     print('Observer loop compete', [
       ["Result", result],
@@ -36,6 +36,7 @@ function getUsers() {
       image: user.querySelector(".G394Xd").src,
       color: 'blue',
       blocked: id in db.blocked,
+      warn: false
     };
   });
 }
@@ -52,7 +53,7 @@ function process(users) {
       else { user.events.push("unmuted") }
     }
     delete db.previous[user.id];
-    if ( !user.muted && !user.blocked) { warnUsers.push(user) } 
+    if ( !user.muted && !user.blocked) { warnUsers.push(user); user.warn = true } 
     if (user.events.length > 0) { change.push(user) }
     result[user.id] = user;
   });

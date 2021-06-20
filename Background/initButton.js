@@ -61,8 +61,8 @@ function activeObserver() {
 }
 
 function desativeObserver() {
-  const button = document.querySelector('#notDisturb')
+  const button = document.querySelector('#observer')
   button.style.backgroundColor = '#5da0f6'
   db.observer = false
-  newClick("#notDisturb", activeObserver, desativeObserver)
+  newClick("#observer", activeObserver, desativeObserver)
 }

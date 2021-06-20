@@ -42,16 +42,20 @@ function desativeNotDisturb() {
   db.notDisturb = false
   db.muted = false
   Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
+  Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))
   newClick("#notDisturb", activeNotDisturb, desativeNotDisturb)
 }
 
-function warn(users) {
+function warn(users, hasChanges) {
   if (db.notDisturb && users.length > 0) {
+    if (hasChanges) {Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))}
     if (!db.muted) { clearTimeout(db.warnTimeout) }
     Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
     db.muted = false
     db.warnTimeout = setTimeout(() => {
+      console.log('>> Timer finished')
       Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)
+      Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))
       db.muted = true
     }, db.timer)
     print('>> Not disturb warn', [
