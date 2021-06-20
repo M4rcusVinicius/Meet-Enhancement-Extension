@@ -33,9 +33,7 @@ function init() {
     false,
     () => {
       onClick("#observer", activeObserver);
-      onClick("#notDisturb", () => {
-        console.log("Not disturb");
-      });
+      onClick("#notDisturb", activeNotDisturb);
     }
   );
   buildStyle({
@@ -63,8 +61,29 @@ function activeObserver() {
 }
 
 function desativeObserver() {
-  const button = document.querySelector('#observer')
+  const button = document.querySelector('#notDisturb')
   button.style.backgroundColor = '#5da0f6'
   db.observer = false
-  newClick("#observer", activeObserver, desativeObserver)
+  newClick("#notDisturb", activeObserver, desativeObserver)
+}
+
+function activeNotDisturb() {
+  try {
+    const button = document.querySelector('#notDisturb')
+    button.style.backgroundColor = '#1f6ed8'
+    db.notDisturb = true
+    newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
+    print("Active not disturb", [ ["Button:", button] ])
+  } catch (err) {
+    error("Error on active not disturb", [
+      ["Data base:", db]
+    ], err)
+  }
+}
+
+function desativeNotDisturb() {
+  const button = document.querySelector('#notDisturb')
+  button.style.backgroundColor = '#5da0f6'
+  db.notDisturb = false
+  newClick("#notDisturb", activeNotDisturb, desativeNotDisturb)
 }

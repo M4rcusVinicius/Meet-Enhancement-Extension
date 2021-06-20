@@ -3,4 +3,5 @@ const db = {
   blocked: [],
   previous: [],
   observer: false,
+  notDisturb: false,
 }
