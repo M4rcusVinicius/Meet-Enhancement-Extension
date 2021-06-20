@@ -131,3 +131,7 @@
 	border-radius: 5px;
 	margin-left: 5px;
 }
+
+.temporary-alert-marker {
+  background-color: #f4c0c0 !important;
+}

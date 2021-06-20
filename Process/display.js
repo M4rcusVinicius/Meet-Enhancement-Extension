@@ -1,9 +1,11 @@
 const icons = { muted: "mic_off", unmuted: "mic_none", new: "person_add", leave: "logout" };
 
 function display(change) {
+  // Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))
   change.map((user) => {
     const container = document.createElement("div");
     container.classList.add("userContainer");
+    if (user.alert) { container.classList.add("temporary-alert-marker");}
     const date = new Date();
     const time = date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
     container.innerHTML = userConstructor(user.name, user.image, time);

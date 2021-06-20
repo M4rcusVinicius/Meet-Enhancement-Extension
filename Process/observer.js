@@ -34,7 +34,8 @@ function getUsers() {
       events: [],
       image: user.querySelector(".G394Xd").src,
       color: 'blue',
-      blocked: id in db.blocked
+      blocked: id in db.blocked,
+      alert: false,
     };
   });
 }
@@ -51,6 +52,7 @@ function process(users) {
     }
     delete db.previous[user.id];
     if ( !user.muted && !user.blocked) {
+      user.alert = true
       print('Alert by not disturb - Unblock user is talking',[
         ['User ID:', user.id],
         ['User name:', user.name],
