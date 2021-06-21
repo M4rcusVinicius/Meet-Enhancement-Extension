@@ -49,6 +49,9 @@ function message(message, icon, type) {
     if (type) {
       msg.style.color = msgTypes[type].color
       msg.style.backgroundColor = msgTypes[type].back
+    } else {
+      msg.style.color = '#1a73e8'
+      msg.style.backgroundColor = '#c0d6f4'
     }
   } catch(err) {
     error('Error on display message', [
