@@ -63,9 +63,18 @@ function activeObserver() {
 }
 
 function desativeObserver() {
-  message(`O observador foi desativado`, 'sensors')
-  const button = document.querySelector('#observer')
-  button.style.backgroundColor = '#5da0f6'
-  db.observer = false
-  newClick("#observer", activeObserver, desativeObserver)
+  try {
+    message(`O observador foi desativado`, 'sensors')
+    clearTimeout(db.warnTimeout)
+    clearTimeout(db.observerTimeout)
+    const button = document.querySelector('#observer')
+    button.style.backgroundColor = '#5da0f6'
+    db.observer = false
+    newClick("#observer", activeObserver, desativeObserver)
+  } catch (err) {
+    message(`Houve um erro ao desativar o observador`, 'report_gmailerrorred', 'error' )
+    error("Error on desative observer", [
+      ["Data base:", db]
+    ], err)
+  }
 }

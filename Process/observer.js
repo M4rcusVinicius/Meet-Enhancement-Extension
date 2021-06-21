@@ -17,7 +17,7 @@ function observer() {
       setTimeout(() => {
         document.querySelector('#progress').classList.add("load")
       }, 10)
-      setTimeout(observer, 1500);
+      db.observerTimeout = setTimeout(observer, 1500);
     }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);

@@ -43,6 +43,7 @@ function desativeNotDisturb() {
   message(`O modo não perturbe foi desativado`, 'do_not_disturb_on')
   const button = document.querySelector('#notDisturb')
   button.style.backgroundColor = '#5da0f6'
+  clearTimeout(db.warnTimeout)
   db.notDisturb = false
   db.muted = false
   Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
