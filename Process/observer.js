@@ -57,7 +57,10 @@ function process(users) {
   let isWarn = false;
 
   users.forEach((user) => {
-    if (!(user.id in db.previous)) { user.events.push("new") }
+    if (!(user.id in db.previous)) { 
+      user.events.push("new")
+      if (!user.muted) { user.events.push("unmuted") }
+    }
     else if (db.previous[user.id].muted !== user.muted) {
       if (user.muted) { user.events.push("muted") } 
       else { user.events.push("unmuted") }
