@@ -1,6 +1,5 @@
 function observer() {
   try {
-    message('Reiniciando observador', 'flag')
     const users = getUsers();
     const [result, change, warnUsers] = process(users);
     warn(warnUsers, change.length > 0)
@@ -17,7 +16,6 @@ function observer() {
 }
 
 function getUsers() {
-  message('Extraindo informações', 'travel_explore')
   const query = document.querySelectorAll(".KV1GEc");
   if (query.length === 0) {
     const err = new Error("Query on get users return 0 elements")
@@ -44,7 +42,6 @@ function getUsers() {
 }
 
 function process(users) {
-  message('Processando dados', 'account_tree')
   const result = new Object();
   const change = new Array();
   const warnUsers = new Array();
