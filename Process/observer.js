@@ -1,8 +1,11 @@
 function observer() {
   try {
     const users = getUsers();
-    const [result, change, warnUsers] = process(users);
-    warn(warnUsers, change.length > 0)
+    const [result, change, isWarn] = process(users);
+    const numChang = change.length
+    if(numChang > 0) {message(`Foram encontrados ${numChang} eventos`, 'view_in_ar' )}
+    else { message(`Não foi encontrado nenhum evento`, 'view_in_ar' ) }
+    warn(isWarn, numChang > 0)
     db.previous = result;
     print('Observer loop compete', [
       ["Result", result],
@@ -12,6 +15,7 @@ function observer() {
     if (db.observer) { setTimeout(observer, 1000); }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);
+    message(`Erro no observador`, 'report_gmailerrorred', 'error' )
   }
 }
 
@@ -44,7 +48,7 @@ function getUsers() {
 function process(users) {
   const result = new Object();
   const change = new Array();
-  const warnUsers = new Array();
+  let isWarn = false;
 
   users.forEach((user) => {
     if (!(user.id in db.previous)) { user.events.push("new") }
@@ -53,7 +57,7 @@ function process(users) {
       else { user.events.push("unmuted") }
     }
     delete db.previous[user.id];
-    if ( !user.muted && !user.blocked) { warnUsers.push(user); user.warn = true } 
+    if ( !user.muted && !user.blocked) { isWarn = true; user.warn = true } 
     if (user.events.length > 0) { change.push(user) }
     result[user.id] = user;
   });
@@ -62,5 +66,5 @@ function process(users) {
     user.events.push("leave");
     change.push(user);
   }
-  return [result, change, warnUsers];
+  return [result, change, isWarn];
 }

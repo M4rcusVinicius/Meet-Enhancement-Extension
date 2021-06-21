@@ -39,7 +39,7 @@ function print(message, extend) {
   }
 }
 
-const msgTypes = { warn: { color: "#be9000", back: "#ffebad"} }
+const msgTypes = { warn: { color: "#be9000", back: "#ffebad" }, error: { color: "#e81a1a", back: "#f4c0c0"} }
 
 function message(message, icon, type) {
   try {

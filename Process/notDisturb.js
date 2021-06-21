@@ -15,6 +15,7 @@ function block(user) {
       userQuery.map(item => item.style.color = "rgb(26, 115, 232)")
     }
   } catch (err) {
+    message(`Houve um erro ao desativar o modo não perturbe`, 'report_gmailerrorred', 'error' )
     error("Error on block person", [
       ["Blocked list:", db.blocked],
       ["User:", user],
@@ -24,12 +25,14 @@ function block(user) {
 
 function activeNotDisturb() {
   try {
+    message(`O modo não perturbe foi ativado`, 'do_not_disturb_on')
     const button = document.querySelector('#notDisturb')
     button.style.backgroundColor = '#1f6ed8'
     db.notDisturb = true
     newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
     print("Active not disturb", [ ["Button:", button] ])
   } catch (err) {
+    message(`Houve um erro ao ativar o modo não perturbe`, 'report_gmailerrorred', 'error' )
     error("Error on active not disturb", [
       ["Data base:", db]
     ], err)
@@ -37,6 +40,7 @@ function activeNotDisturb() {
 }
 
 function desativeNotDisturb() {
+  message(`O modo não perturbe foi desativado`, 'do_not_disturb_on')
   const button = document.querySelector('#notDisturb')
   button.style.backgroundColor = '#5da0f6'
   db.notDisturb = false
@@ -46,8 +50,8 @@ function desativeNotDisturb() {
   newClick("#notDisturb", activeNotDisturb, desativeNotDisturb)
 }
 
-function warn(users, hasChanges) {
-  if (db.notDisturb && users.length > 0) {
+function warn(isWarn, hasChanges) {
+  if (db.notDisturb && isWarn) {
     if (hasChanges) {Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))}
     if (!db.muted) { clearTimeout(db.warnTimeout) }
     Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
@@ -59,7 +63,7 @@ function warn(users, hasChanges) {
       db.muted = true
     }, db.timer)
     print('>> Not disturb warn', [
-      ['Users', users]
+      ['isWarn', isWarn]
     ])
   }
 }

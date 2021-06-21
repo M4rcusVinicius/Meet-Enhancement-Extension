@@ -44,6 +44,7 @@ function init() {
 
 function activeObserver() {
   try {
+    message(`O observador foi iniciado`, 'sensors')
     const button = document.querySelector('#observer')
     button.style.backgroundColor = '#1f6ed8'
     db.observer = true
@@ -54,6 +55,7 @@ function activeObserver() {
     ])
     observer()
   } catch (err) {
+    message(`Houve um erro ao ativar o observador`, 'report_gmailerrorred', 'error' )
     error("Error on active observer", [
       ["Data base:", db]
     ], err)
@@ -61,6 +63,7 @@ function activeObserver() {
 }
 
 function desativeObserver() {
+  message(`O observador foi desativado`, 'sensors')
   const button = document.querySelector('#observer')
   button.style.backgroundColor = '#5da0f6'
   db.observer = false
