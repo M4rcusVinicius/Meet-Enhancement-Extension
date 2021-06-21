@@ -1,6 +1,7 @@
 const icons = { muted: "mic_off", unmuted: "mic_none", new: "person_add", leave: "logout" };
 
 function display(change) {
+  message('Atualizando resultados', 'group_add')
   change.map((user) => {
     const container = document.createElement("div");
     container.classList.add("userContainer");
