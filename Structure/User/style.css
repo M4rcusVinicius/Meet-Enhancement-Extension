@@ -135,3 +135,12 @@
 .temporary-alert-marker {
   background-color: #f4c0c0 !important;
 }
+
+.load {
+  animation: 1s linear 1 load;
+}
+
+@keyframes load {
+  from {width: 0%;}
+  to {width: 100%;}
+}

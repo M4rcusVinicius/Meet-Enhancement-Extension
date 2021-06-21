@@ -12,7 +12,13 @@ function observer() {
       ["Change", change],
     ])
     display(change)
-    if (db.observer) { setTimeout(observer, 1000); }
+    if (db.observer) {
+      document.querySelector('#progress').classList.remove("load")
+      setTimeout(() => {
+        document.querySelector('#progress').classList.add("load")
+      }, 10)
+      setTimeout(observer, 1500);
+    }
   } catch (err) {
     error("Error on observer", [["Data base:", db]], err);
     message(`Erro no observador`, 'report_gmailerrorred', 'error' )
