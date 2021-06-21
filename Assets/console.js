@@ -39,10 +39,17 @@ function print(message, extend) {
   }
 }
 
-function message(message, icon) {
+const msgTypes = { warn: { color: "#be9000", back: "#ffebad"} }
+
+function message(message, icon, type) {
   try {
-    document.querySelector('#message > div').innerHTML = message
-    document.querySelector('#message > i').innerHTML = icon
+    const msg = document.querySelector('#message')
+    msg.querySelector('div').innerHTML = message
+    msg.querySelector('i').innerHTML = icon
+    if (type) {
+      msg.style.color = msgTypes[type].color
+      msg.style.backgroundColor = msgTypes[type].back
+    }
   } catch(err) {
     error('Error on display message', [
       ['Message:', message],
