@@ -26,11 +26,11 @@ function block(user) {
 function activeNotDisturb() {
   try {
     message(`O modo não perturbe foi ativado`, 'do_not_disturb_on')
-    const button = document.querySelector('#notDisturb')
-    button.style.backgroundColor = '#1f6ed8'
+    const notDisturbBar = document.querySelector('#notDisturbBar')
+    notDisturbBar.style.width = '100%'
     db.notDisturb = true
     newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
-    print("Active not disturb", [ ["Button:", button] ])
+    // print("Active not disturb", [ ["Button:", button] ])
   } catch (err) {
     message(`Houve um erro ao ativar o modo não perturbe`, 'report_gmailerrorred', 'error' )
     error("Error on active not disturb", [
@@ -41,8 +41,8 @@ function activeNotDisturb() {
 
 function desativeNotDisturb() {
   message(`O modo não perturbe foi desativado`, 'do_not_disturb_on')
-  const button = document.querySelector('#notDisturb')
-  button.style.backgroundColor = '#5da0f6'
+  const notDisturbBar = document.querySelector('#notDisturbBar')
+  notDisturbBar.style.width = '0%'
   clearTimeout(db.warnTimeout)
   db.notDisturb = false
   db.muted = false
@@ -66,5 +66,7 @@ function warn(isWarn, hasChanges) {
     print('>> Not disturb warn', [
       ['isWarn', isWarn]
     ])
+  } else if (db.notDisturb) {
+    Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)
   }
 }

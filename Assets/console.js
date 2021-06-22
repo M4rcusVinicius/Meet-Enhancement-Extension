@@ -20,17 +20,19 @@ function error(message, extend,  error) {
   }
 }
 
-function print(message, extend) {
+function print(/* message, extend */) {
   try {
-    console.groupCollapsed(message)
-    extend.forEach(element => {
-      if (Array.isArray(element)) {
-        console.log(...element)
-      } else {
-        console.log(element)
-      }
-    });
-    console.groupEnd()
+    /*  
+      console.groupCollapsed(message)
+      extend.forEach(element => {
+        if (Array.isArray(element)) {
+          console.log(...element)
+        } else {
+          console.log(element)
+        }
+      });
+      console.groupEnd()
+    */
   } catch(err) {
     console.log('Error on print message')
     console.log('Message:', message)

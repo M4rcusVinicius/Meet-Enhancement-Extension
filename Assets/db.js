@@ -6,6 +6,6 @@ const db = {
   observerTimeout: 0,
   notDisturb: false,
   warnTimeout: 0,
-  timer: 8000,
+  timer: 4000,
   muted: false,
 }

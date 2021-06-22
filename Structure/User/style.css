@@ -140,6 +140,10 @@
   animation: 1s linear 1 load;
 }
 
+.loadNotDisturb {
+  animation: 4s linear 1 load;
+}
+
 @keyframes load {
   from {width: 0%;}
   to {width: 100%;}
