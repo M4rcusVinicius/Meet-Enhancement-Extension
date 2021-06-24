@@ -55,7 +55,6 @@ function warn(isWarn, hasChanges) {
       document.querySelector('#notDisturbBar').classList.add("loadNotDisturb")
     }, 10)
     db.warnTimeout = setTimeout(() => {
-      console.log('>> Timer finished')
       Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)
       Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))
       db.muted = true
