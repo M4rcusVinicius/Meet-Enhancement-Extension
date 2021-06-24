@@ -1,8 +1,15 @@
 {
-  "name": "Pacote de aprimoramento do Google Meet",
+  "name": "Pacote de aprimoramento do Google Meet 2021",
   "manifest_version": 2,
   "version": "1.2",
 
+  "description": "A extensão analisa a chamada e coleta diversas informações úteis como o segundo exato que cada participante entrou, saiu, ligou ou desligou o microfone. As informações são apresentadas em uma dashboard na mesma seção que fica a lista de usuários. Além disso, a função NÃO PERTURBE utiliza esses dados para bloquear alguns participantes, ou seja, clicando em cima do nome de algum(s) usuários, o microfone fica azul. Ligando esse modo, o som é desligado quando apenas participantes bloqueados estão falando, quando um participante não bloqueado liga o microfone, o som é ativado novamente automaticamente.",
+
+  "icons": {
+    "48": "icons/meetIcon48.png",
+    "96": "icons/meetIcon96.png"
+  },
+  
   "content_scripts": [
     {
       "matches": ["*://meet.google.com/*"],
