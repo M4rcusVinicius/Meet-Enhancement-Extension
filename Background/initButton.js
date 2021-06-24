@@ -71,6 +71,9 @@ function desativeObserver() {
     button.style.backgroundColor = '#5da0f6'
     db.observer = false
     newClick("#observer", activeObserver, desativeObserver)
+    if (db.notDisturb) {
+      desativeNotDisturb()
+    }
   } catch (err) {
     message(`Houve um erro ao desativar o observador`, 'report_gmailerrorred', 'error' )
     error("Error on desative observer", [
