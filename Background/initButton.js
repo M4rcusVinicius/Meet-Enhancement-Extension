@@ -24,6 +24,8 @@ function init() {
   html.id = "dashboard";
   html.classList.add("WUFI9b");
   html.style.zIndex = '1000'
+  document.querySelector('.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1) > i:nth-child(3)').innerHTML = 'view_in_ar'
+  document.querySelector('.SGP0hd > div:nth-child(2) > span:nth-child(1) > button:nth-child(1) > i:nth-child(2)').innerHTML = 'view_in_ar'
   constructor(
     "Create dashboard",
     browser.extension.getURL("Structure/dashboard/index.html"),
@@ -34,6 +36,7 @@ function init() {
     () => {
       onClick("#observer", activeObserver);
       onClick("#notDisturb", activeNotDisturb);
+      setListener()
     }
   );
   buildStyle({
@@ -80,4 +83,20 @@ function desativeObserver() {
       ["Data base:", db]
     ], err)
   }
+}
+
+function setListener() {
+  const buttons = document.querySelectorAll('.VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.JsuyRc.boDUxc')
+  buttons[0].addEventListener('click', closeDash)
+  buttons[1].addEventListener('click', openDash)
+  buttons[2].addEventListener('click', closeDash)
+  buttons[3].addEventListener('click', closeDash)
+}
+
+function openDash() {
+  document.querySelector('#dashboard').style.zIndex = '1000'
+}
+
+function closeDash() {
+  document.querySelector('#dashboard').style.zIndex = '-1'
 }
