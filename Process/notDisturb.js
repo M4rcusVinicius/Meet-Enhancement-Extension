@@ -57,6 +57,10 @@ function warn(isWarn, hasChanges) {
     if (!db.muted) { clearTimeout(db.warnTimeout) }
     Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = false)
     db.muted = false
+    document.querySelector('#notDisturbBar').classList.remove("loadNotDisturb")
+    setTimeout(() => {
+      document.querySelector('#notDisturbBar').classList.add("loadNotDisturb")
+    }, 10)
     db.warnTimeout = setTimeout(() => {
       console.log('>> Timer finished')
       Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)

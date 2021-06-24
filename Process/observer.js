@@ -1,7 +1,7 @@
 function observer() {
   try {
     const users = getUsers();
-    const [result, change, isWarn] = process(users);
+    const [result, change, isWarn, unmuted] = process(users);
     const numChang = change.length
     if(numChang > 0) {message(`Foram encontrados ${numChang} eventos`, 'view_in_ar' )}
     else { message(`Não foi encontrado nenhum evento`, 'view_in_ar' ) }
@@ -11,7 +11,7 @@ function observer() {
       ["Result", result],
       ["Change", change],
     ])
-    display(change)
+    display(change, unmuted)
     if (db.observer) {
       document.querySelector('#progress').classList.remove("load")
       setTimeout(() => {
@@ -55,6 +55,7 @@ function process(users) {
   const result = new Object();
   const change = new Array();
   let isWarn = false;
+  const unmuted = new Array()
 
   users.forEach((user) => {
     if (!(user.id in db.previous)) { 
@@ -68,6 +69,7 @@ function process(users) {
     delete db.previous[user.id];
     if ( !user.muted && !user.blocked) { isWarn = true; user.warn = true } 
     if (user.events.length > 0) { change.push(user) }
+    if (!user.muted) { unmuted.push(user) }
     result[user.id] = user;
   });
 
@@ -75,5 +77,5 @@ function process(users) {
     user.events.push("leave");
     change.push(user);
   }
-  return [result, change, isWarn];
+  return [result, change, isWarn, unmuted];
 }

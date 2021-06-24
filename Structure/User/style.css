@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+.userContainerTalking {
+  background-color: #d6e4f8;
+}
+
 .userContainer:hover {
   background-color: #c0d6f4;
 }
