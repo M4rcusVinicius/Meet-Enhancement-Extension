@@ -35,7 +35,11 @@ function getUsers() {
   const names = new Array();
   return Object.values(query).map((user, index) => {
     let name = user.querySelector(".ZjFb7c").innerText;
-    if (names.indexOf(name) !== -1) { name = name + ` (${index})`; }
+    let counter = 2
+    while (names.indexOf(name) !== -1) {
+      name = name + ` (${counter})`;
+      counter++
+    }
     const id = name.replace(/[^\w\s]/gi, "").replace(/\s/g, "-")
     names.push(name);
     return {
