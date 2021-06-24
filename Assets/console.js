@@ -20,27 +20,6 @@ function error(message, extend,  error) {
   }
 }
 
-function print(/* message, extend */) {
-  try {
-    /*  
-      console.groupCollapsed(message)
-      extend.forEach(element => {
-        if (Array.isArray(element)) {
-          console.log(...element)
-        } else {
-          console.log(element)
-        }
-      });
-      console.groupEnd()
-    */
-  } catch(err) {
-    console.log('Error on print message')
-    console.log('Message:', message)
-    console.log('Extend:', extend)
-    console.groupEnd()
-  }
-}
-
 const msgTypes = { warn: { color: "#be9000", back: "#ffebad" }, error: { color: "#e81a1a", back: "#f4c0c0"} }
 
 function message(message, icon, type) {

@@ -18,7 +18,7 @@ function constructor(message, url, id, html, place, style, callback) {
     if(style) { buildStyle(style, message) }
     build(message, url, id, html, place, callback)
   } catch(err) { 
-    print('Error - ' + message, [
+    error('Error - ' + message, [
       ['Message: ', message],
       ['Path: ', url],
       ['ID: ', id],
@@ -26,7 +26,7 @@ function constructor(message, url, id, html, place, style, callback) {
       ['Place: ', place],
       ['Style: ', style],
       ['Callback: ', callback],
-    ])
+    ], err)
   }
 }
 
@@ -37,10 +37,6 @@ function buildStyle(style, message) {
   link.href = style.src;
   link.id = style.id
   document.querySelector('head').appendChild(link); 
-  print('Style - ' + message, [
-    ['SRC: ', style.src],
-    ['ID: ', style.id],
-  ])
 }
 
 function build(message, url, id, html, place, callback) {
@@ -49,14 +45,6 @@ function build(message, url, id, html, place, callback) {
     if (this.readyState == 4 && this.status == 200) {
       html.innerHTML = this.responseText;
       document.querySelector(place).appendChild(html)
-      print('Complete - ' + message, [
-        ['Message: ', message],
-        ['Path: ', url],
-        ['ID: ', id],
-        ['HTML: ', html],
-        ['Place: ', place],
-        ['Callback: ', callback],
-      ])
     }
   };
   xml.open("GET", url, true);
@@ -101,11 +89,6 @@ function onClick(query, func, type = 'click') {
     document.querySelectorAll(query).forEach(element => {
       element.addEventListener(type, func)
     })
-    print('Add event listener - ' +  query, [
-      ['Function:', func],
-      ['Query:', query],
-      ['Type:', type]
-    ])
   } catch (err) {
     error('Error on add event listener - ' +  query, [
       ['Function:', func],
@@ -121,12 +104,6 @@ function newClick(query, func, prevFunc, type = 'click') {
       element.removeEventListener(type, prevFunc)
       element.addEventListener(type, func)
     })
-    print('Add new event listener - ' +  query, [
-      ['Function:', func],
-      ['Previous function:', prevFunc],
-      ['Query:', query],
-      ['Type:', type]
-    ])
   } catch (err) {
     error('Error on add new event listener - ' +  query, [
       ['Function:', func],

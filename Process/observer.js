@@ -7,10 +7,6 @@ function observer() {
     else { message(`Não foi encontrado nenhum evento`, 'view_in_ar' ) }
     warn(isWarn, numChang > 0)
     db.previous = result;
-    print('Observer loop compete', [
-      ["Result", result],
-      ["Change", change],
-    ])
     display(change, unmuted)
     if (db.observer) {
       document.querySelector('#progress').classList.remove("load")

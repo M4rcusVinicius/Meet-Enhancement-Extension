@@ -3,15 +3,9 @@ function block(user) {
     const userQuery = Object.values(document.getElementsByClassName(user.id + 'microphone'))
     if (user.id in db.blocked) {
       userQuery.map(item => item.style.color = "#6d6d6f")
-      print(`Remove ${user.name} (${user.id}) from blocked list`, [
-        ["Deleted user info: ", db.blocked[user.id]],
-        ["Current user info:", user]
-        ["Blocked list:", db.blocked],
-      ]);
       delete db.blocked[user.id];
     } else {
       db.blocked[user.id] = user;
-      print(`Add ${user.name} (${user.id}) in blocked list`, [["User:", user]]);
       userQuery.map(item => item.style.color = "rgb(26, 115, 232)")
     }
   } catch (err) {
@@ -30,7 +24,6 @@ function activeNotDisturb() {
     notDisturbBar.style.width = '100%'
     db.notDisturb = true
     newClick("#notDisturb", desativeNotDisturb, activeNotDisturb)
-    // print("Active not disturb", [ ["Button:", button] ])
   } catch (err) {
     message(`Houve um erro ao ativar o modo não perturbe`, 'report_gmailerrorred', 'error' )
     error("Error on active not disturb", [
@@ -67,9 +60,6 @@ function warn(isWarn, hasChanges) {
       Object.values(document.querySelectorAll('.temporary-alert-marker')).map(item => item.classList.remove("temporary-alert-marker"))
       db.muted = true
     }, db.timer)
-    print('>> Not disturb warn', [
-      ['isWarn', isWarn]
-    ])
   } else if (db.notDisturb) {
     Object.values(document.querySelectorAll('audio')).map(audio => audio.muted = true)
   }

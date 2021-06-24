@@ -9,10 +9,6 @@ function initButton() {
   };
   quickBuild(element, "body", style);
   onClick("#initButton", init);
-  print("Create init button", [
-    ["Element:", element],
-    ["Style:", style],
-  ]);
 }
 
 // =========================================================== //
@@ -52,10 +48,6 @@ function activeObserver() {
     button.style.backgroundColor = '#1f6ed8'
     db.observer = true
     newClick("#observer", desativeObserver, activeObserver)
-    print("Active observer", [
-      ["Button:", button],
-      ["DB observer", db.observer],
-    ])
     observer()
   } catch (err) {
     message(`Houve um erro ao ativar o observador`, 'report_gmailerrorred', 'error' )
